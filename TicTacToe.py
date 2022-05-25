@@ -27,8 +27,27 @@ def player_move(icon):
         print("That space is taken!")
 
 
+def victory(icon):
+    if(board[0] == icon and board[1] == icon and board[2] == icon) or\
+      (board[3] == icon and board[4] == icon and board[5] == icon) or\
+      (board[6] == icon and board[7] == icon and board[8] == icon) or\
+      (board[0] == icon and board[4] == icon and board[8] == icon) or\
+      (board[2] == icon and board[4] == icon and board[6] == icon) or\
+      (board[1] == icon and board[4] == icon and board[7] == icon):
+        return True
+    else:
+        return False
+
+
 while True:
     print_board()
     player_move("X")
     print_board()
+    if victory("X"):
+        print("Player 1 wins! Congrats!")
+        break
     player_move("O")
+    if victory("O"):
+        print_board()
+        print("Player 2 wins! Congrats!")
+        break
